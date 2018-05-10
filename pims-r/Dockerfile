@@ -5,8 +5,6 @@ FROM callysto/pims-minimal
 
 MAINTAINER Ian Allison <iana@pims.math.ca>
 
-USER $NB_USER
-
 # R
 RUN conda config --add channels r && \
     conda install --quiet --yes \
@@ -39,5 +37,3 @@ RUN conda config --add channels r && \
     'r-randomforest=4.6*' && conda clean -tipsy
 
 COPY Rprofile.site /opt/conda/lib/R/etc/Rprofile.site
-
-USER root
