@@ -81,4 +81,6 @@ RUN mkdir -p /opt/notebook/local_templates && mkdir -p /etc/jupyter
 COPY notebook.html /opt/notebook/local_templates/notebook.html
 COPY jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py
 
-USER $NB_UID
+RUN useradd -m -s /bin/bash -N -u 1002 callysto
+USER callysto
+CMD ["jupyterhub-singleuser"]
