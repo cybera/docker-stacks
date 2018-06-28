@@ -83,4 +83,9 @@ COPY jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py
 
 RUN useradd -m -s /bin/bash -N -u 1002 callysto
 USER callysto
-CMD ["jupyterhub-singleuser"]
+# Configure environment
+ENV NB_USER=callysto \
+    NB_UID=1002
+ENV HOME=/home/$NB_USER
+WORKDIR $HOME
+
