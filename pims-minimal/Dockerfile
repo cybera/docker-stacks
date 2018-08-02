@@ -77,15 +77,13 @@ COPY pip.conf /etc/pip.conf
 
 ENV SHELL /bin/bash
 
-RUN mkdir -p /opt/notebook/local_templates && mkdir -p /etc/jupyter
-COPY notebook.html /opt/notebook/local_templates/notebook.html
 COPY jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py
 
-RUN useradd -m -s /bin/bash -N -u 1002 callysto
+RUN useradd -m -s /bin/bash -N -u 9999 callysto
 USER callysto
 # Configure environment
 ENV NB_USER=callysto \
-    NB_UID=1002
+    NB_UID=9999
 ENV HOME=/home/$NB_USER
 WORKDIR $HOME
 
