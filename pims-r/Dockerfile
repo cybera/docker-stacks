@@ -43,9 +43,9 @@ RUN conda config --add channels r && \
 
 COPY Rprofile.site /opt/conda/lib/R/etc/Rprofile.site
 
-USER callysto
+USER jupyter
 # Configure environment
-ENV NB_USER=callysto \
+ENV NB_USER=jupyter \
     NB_UID=9999
 ENV HOME=/home/$NB_USER
 

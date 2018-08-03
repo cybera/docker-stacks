@@ -85,10 +85,10 @@ ENV SHELL /bin/bash
 
 COPY jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py
 
-RUN useradd -m -s /bin/bash -N -u 9999 callysto
-USER callysto
+RUN useradd -m -s /bin/bash -N -u 9999 jupyter
+USER jupyter
 # Configure environment
-ENV NB_USER=callysto \
+ENV NB_USER=jupyter \
     NB_UID=9999
 ENV HOME=/home/$NB_USER
 WORKDIR $HOME
