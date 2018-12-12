@@ -44,8 +44,7 @@ if [ $(id -u) == 0 ] ; then
     # Only attempt to change the jovyan username if it exists
     if id jovyan &> /dev/null ; then
         echo "Set username to: $NB_USER"
-        echo "Set homedir to: $HOME"
-        usermod -d "$HOME" -l $NB_USER jovyan
+        usermod -d /home/$NB_USER -l $NB_USER jovyan
     fi
 
     # Handle case where provisioned storage does not have the correct permissions by default
@@ -71,7 +70,7 @@ if [ $(id -u) == 0 ] ; then
         fi
         # if workdir is in /home/jovyan, cd to /home/$NB_USER
         if [[ "$PWD/" == "/home/jovyan/"* ]]; then
-            newcwd="$HOME/${PWD:13}"
+            newcwd="/home/$NB_USER/${PWD:13}"
             echo "Setting CWD to $newcwd"
             cd "$newcwd"
         fi
