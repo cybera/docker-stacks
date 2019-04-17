@@ -4,7 +4,7 @@
 
 # Use bash for inline if-statements in arch_patch target
 SHELL:=bash
-OWNER:=callysto
+OWNER:=cybera
 ARCH:=$(shell uname -m)
 DIFF_RANGE?=master...HEAD
 
@@ -20,7 +20,9 @@ ALL_STACKS:=base-notebook \
 	scipy-notebook \
 	pims-minimal \
 	pims-r \
-	callysto-swift
+	callysto-swift \
+	cybera-jhub \
+	amii
 endif
 
 ALL_IMAGES:=$(ALL_STACKS)
@@ -110,9 +112,5 @@ ifndef DOCKER_PASSWORD
 endif
 
 	@docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD) ; \
-	docker push callysto/base-notebook ; \
-	docker push callysto/minimal-notebook ; \
-	docker push callysto/scipy-notebook ; \
-	docker push callysto/pims-minimal ; \
-	docker push callysto/pims-r ; \
-	docker push callysto/callysto-swift
+	docker push cybera/cybera-jhub ; \
+	docker push cybera/amii ;
