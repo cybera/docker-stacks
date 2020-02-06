@@ -102,7 +102,7 @@ test/callysto-swift: ## ignore tests for swiftfs since it requires a functional 
 verify/%: ## verify an image works by testing it across several notebooks
 	docker run -it --rm --mount source=$$(pwd)/test-notebooks,target=/test-notebooks,type=bind $(OWNER)/$(notdir $@) bash /test-notebooks/test.sh
 
-callysto/push: ## push callysto images to docker hub
+cybera/push: ## push cybera images to docker hub
 ifndef DOCKER_USERNAME
 	$(error DOCKER_USERNAME is not set)
 endif
@@ -113,4 +113,4 @@ endif
 
 	@docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD) ; \
 	docker push cybera/cybera-jhub ; \
-	docker push cybera/amii ;
+	docker push cybera/amii-jhub ;
